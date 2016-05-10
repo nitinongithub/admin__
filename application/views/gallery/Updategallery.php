@@ -69,7 +69,7 @@
                         <div class="col-md-12">
                             <div style="margin-top: 1%;">
                                 <blockquote>
-                                    <ul class="list-inline"  id="gallery">
+                                    <ul class="list-inline" id="gallery">
 
                                     </ul>
                                 </blockquote>

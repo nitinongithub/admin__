@@ -615,6 +615,7 @@ class My_model extends CI_Model {
         $data = array(
             'CATEGORY' => $this->input->post('txtCategory'),
             'DESC' => $this->input->post('txtDesc'),
+            'STATUS' =>1,
         );
         $query = $this->db->insert('gallery_category', $data);
         $id__ = $this->db->insert_id();
@@ -644,4 +645,11 @@ class My_model extends CI_Model {
         return $bool_;
     }
     
+    function active_inactive_($id_,$status) {
+        $data = array(
+            'STATUS'=>$status,
+        );
+        $this->db->where('CATEG_ID', $id_);
+        $query = $this->db->update('gallery_category', $data);        
+    }    
 }

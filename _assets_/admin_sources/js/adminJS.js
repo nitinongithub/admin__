@@ -9,15 +9,57 @@ function  loadgallery(dataCmb) {
         (btnDelete).on('click', function (e) {
             e.preventDefault();
             var id = $(this).attr('id');
-            $("#" + id + "g").hide();
+            //$("#" + id + "g").hide();
             $.ajax({
                 url: site_url_ + "/gallery/deleteimg",
                 data: 'id=' + id,
                 type: 'POST'
             }).done(function (data) {
+                loadgallery(dataCmb);
             });
         });
 
+        var btnActive = $("#gallery").find($(".btn-active"));
+
+        (btnActive).on('click', function (e) {
+            e.preventDefault();
+            var id = $(this).attr('id');
+            $.ajax({
+                url: site_url_ + "/gallery/activeImg",
+                data: 'id=' + id,
+                type: 'POST'
+            }).done(function (data) {
+                loadgallery(dataCmb);
+            });
+        });
+        
+        var btnInactive = $("#gallery").find($(".btn-inactive"));
+
+        (btnInactive).on('click', function (e) {
+            e.preventDefault();
+            var id = $(this).attr('id');
+            $.ajax({
+                url: site_url_ + "/gallery/InactiveImg",
+                data: 'id=' + id,
+                type: 'POST'
+            }).done(function (data) {
+                loadgallery(dataCmb);
+            });
+        });
+        
+        var btnActive = $("#myUpload").find($(".btn-Submit"));
+
+        (btnActive).on('click', function (e) {
+            e.preventDefault();
+            var id = dataCmb.value;
+            $.ajax({
+                url: site_url_ + "/gallery/do_upload",
+                data: 'id=' + id,
+                type: 'POST'
+            }).done(function(data) {
+                loadgallery(dataCmb);
+            });
+        });
     });
 }
 
@@ -28,35 +70,3 @@ function change_Cat(id_, val_, val2_) {
     document.getElementById('editCat').style.display = 'block';
     document.getElementById('newCat').style.display = 'none';
 }
-
-//function selectCat() {
-//  data_ = $("#frmupload").serialize();    
-// url_ = site_url_ + "/admin_/getImages";   
-
-//$('#loadGallery').css({'color': '#ff0000', 'font-size': '13px'});
-//$('#loadGallery').html('loading Gallery. Please wait...');
-//$.ajax({
-//  type: "POST",
-// url: url_,
-//data: data_,
-//success: function (data) {
-//  $('#loadGallery').html(data);
-//}
-//});
-//}
-
-//function uploadImg() {
-//   data_ = $("#frmupload").serialize();    
-// url_ = site_url_ + "/admin_/uploadGallery";   
-
-//$('#loadGallery').css({'color': '#ff0000', 'font-size': '13px'});
-//$('#loadGallery').html('loading Gallery. Please wait...');
-//$.ajax({
-//  type: "POST",
-// url: url_,
-//data: data_,
-//success: function (data) {
-//  $('#loadGallery').html(data);
-//}
-//});
-//}

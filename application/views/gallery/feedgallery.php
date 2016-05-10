@@ -128,15 +128,22 @@
                                 'id' => 'frmStaticHead_Del',
                             );
                             ?>
-                            <?php echo form_open('gallery/delete_static_head', $attrib_); ?>
+                            <?php echo form_open('', $attrib_); ?>
                             <?php if (count($existing) != 0) { ?>
                                 <?php foreach ($existing as $item_) { ?>
                                     <tr>
-                                        <td style="width:30%"><a href="#"><?php echo strtoupper($item_->CATEGORY); ?></a></td>
-                                        <td style="width:50%"><a href="#"><?php echo strtoupper($item_->DESC); ?></a></td>
+                                        <td>
+                                            <?PHP if ($item_->STATUS != 1) { ?>
+                                                <a href="<?php echo site_url('gallery/active_inactive/' . $item_->CATEG_ID . '/1'); ?>"><img src="<?php echo base_url('_assets_/images/inactive.png'); ?>"></a>
+                                            <?PHP } else { ?>
+                                                <a href="<?php echo site_url('gallery/active_inactive/' . $item_->CATEG_ID . '/0'); ?>"><img src="<?php echo base_url('_assets_/images/active.png'); ?>"></a>
+                                            <?PHP } ?>
+                                        </td>
+                                        <td style="width:20%"><a href="#"><?php echo strtoupper($item_->CATEGORY); ?></a></td>
+                                        <td style="width:45%"><a href="#"><?php echo strtoupper($item_->DESC); ?></a></td>
                                         <td align="right">
                                             <a href="#" id="changeHead_<?php echo $item_->CATEG_ID; ?>" onclick="change_Cat('<?php echo $item_->CATEG_ID; ?>', '<?php echo $item_->CATEGORY; ?>', '<?php echo $item_->DESC; ?>');"><i class="fa fa-pencil-square-o" style="color:#0066cc; font-size: 20px;"></i></a> | 
-                                            <a href="#" onclick="delete_head('<?php echo $item_->CATEG_ID; ?>');"><i class="fa fa-times" style="color:#E13300; font-size: 20px;"></i>
+                                            <a href="#"><i class="fa fa-times" style="color:#E13300; font-size: 20px;"></i></a>
                                         </td>
                                     </tr>
                                 <?php } ?>

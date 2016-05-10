@@ -14,8 +14,8 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="<?php echo base_url('_assets_/admin_sources/dist/js/sb-admin-2.js'); ?>"></script>
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>        
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.50/jquery.form.min.js"></script>
+<script src="<?php echo base_url('_assets_/admin_sources/bower_components/jquery/dist/jquery-2.1.1.min.js'); ?>"></script>        
+<script src="<?php echo base_url('_assets_/admin_sources/bower_components/jquery/dist/jquery.form.min.js'); ?>"></script>
 <script src="<?php echo base_url('_assets_/admin_sources/js/adminJS.js'); ?>"></script>    
 </body>
 </html>

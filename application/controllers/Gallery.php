@@ -3,7 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Gallery extends my_admin {
-        
+
     function index() {
         $data['user___'] = $this->session->userdata('ussr_');
         $data['existing'] = $this->mm->get_all_categories();
@@ -29,6 +29,16 @@ class Gallery extends my_admin {
         redirect('gallery');
     }
 
+    function active_inactive($id_, $status) {
+        $res_ = $this->mm->active_inactive_($id_, $status);
+        redirect('gallery');
+    }
+
+    function deleteCat($id_) {
+        $res_ = $this->mm->active_inactive_($id_, $status);
+        redirect('gallery');
+    }
+
     function getImages() {
         $data['existing'] = $this->mm->getImagesByCat(trim($this->input->post('txtCategory')));
         echo json_encode($data['existing']);
@@ -41,14 +51,10 @@ class Gallery extends my_admin {
     }
 
     //---------------------------------------------------------------------------------------------
-
     public function do_upload() {
-
         $config['upload_path'] = './_assets_/gallery';
         $config['allowed_types'] = 'jpg|jpeg|png';
         $config['max_size'] = '204800';
-
-
         $this->load->library('upload', $config);
         if (!$this->upload->do_upload()) {
             $error = array('error' => $this->upload->display_errors());
@@ -93,17 +99,21 @@ class Gallery extends my_admin {
                 $lid = $row->GL_ID . 'g';
                 echo "<li class='thumbnail' id='$lid'>
                             <span id='$row->GL_ID' class='btn btn-info btn-block btn-delete'><i class='glyphicon glyphicon-remove'></i>&nbsp;&nbsp;&nbsp;Delete</span>
-                            <img src='$src' alt='$alt' style='max-height: 100px;'>
-                               <!--<span class='btn btn-warning btn-block'>$alt</span></li>-->";
+                            <img src='$src' alt='$alt' style='max-height:100px;'>";
+                if ($row->STATUS != 0) {
+                    echo "<span id='$row->GL_ID' class='btn btn-success btn-block btn-active'>&nbsp;&nbsp;&nbsp;ACTIVE</span>";
+                } else {
+                    echo "<span id='$row->GL_ID' class='btn btn-danger btn-block btn-inactive'>&nbsp;&nbsp;&nbsp;INACTIVE</span>";
+                }
             }
-        }else{
-             echo "<li class='thumbnail' style='color:red'>
+        } else {
+            echo "<li class='thumbnail' style='color:red'>
                            No Images have been added to this gallery</li>";
         }
     }
 
     function deleteimg() {
-        $uploadpath = base_url() . '_assets_/gallery/';
+        $uploadpath = FCPATH . '_assets_/gallery/';
 
         $this->db->where('GL_ID', $this->input->post('id'));
         $query = $this->db->get('gallery');
@@ -114,6 +124,26 @@ class Gallery extends my_admin {
 
         $this->db->where('GL_ID', $this->input->post('id'));
         $this->db->delete('gallery');
+
+        echo'<h4 style="color:green">This image deleted successfully</h4>';
+    }
+
+    function activeImg() {
+        $data = array(
+            'STATUS' => 0,
+        );
+        $this->db->where('GL_ID', $this->input->post('id'));
+        $query = $this->db->update('gallery', $data);
+
+        echo'<h4 style="color:green">This image deleted successfully</h4>';
+    }
+
+    function InactiveImg() {
+        $data = array(
+            'STATUS' => 1,
+        );
+        $this->db->where('GL_ID', $this->input->post('id'));
+        $query = $this->db->update('gallery', $data);
 
         echo'<h4 style="color:green">This image deleted successfully</h4>';
     }
