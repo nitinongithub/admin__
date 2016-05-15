@@ -1,6 +1,6 @@
 <div class="col-lg-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="panel panel-default"<?php echo $style_; ?>>
+        <div class="panel-heading" style="background: #ff9000; color: #ffffff">
             Update Newsletters here...
         </div>
         <div class="panel-body">

@@ -1,6 +1,6 @@
 <div class="col-lg-6">
     <div class="panel panel-default"<?php echo $style_; ?>>
-        <div class="panel-heading">
+        <div class="panel-heading" style="background: #c3f9cb">
             Active Newsletters
         </div>
         <!-- .panel-heading -->

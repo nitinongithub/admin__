@@ -1,6 +1,6 @@
 <div class="col-lg-6">
     <div class="panel panel-default"<?php echo $style_; ?>>
-        <div class="panel-heading">
+        <div class="panel-heading" style="background: #fdc9d6">
             De-Active News
         </div>
         <!-- .panel-heading -->

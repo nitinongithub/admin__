@@ -27,6 +27,9 @@
                         <li>
                             <a href="<?php echo site_url('gallery'); ?>"><i class="fa fa-camera fa-fw"></i> Manage Gallery</a>
                         </li>
+                        <li>
+                            <a href="<?php echo site_url('activity'); ?>"><i class="fa fa-camera fa-fw"></i> Manage Activities</a>
+                        </li>
                     </ul>
                 </div>
             </div>

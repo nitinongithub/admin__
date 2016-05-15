@@ -3,13 +3,13 @@
 
     <head>
 
+        <title>.: <?php echo _SCHOOL_; ?>: Administrative Panel</title>
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Administration Panel, Admin, Administrator">
-        <meta name="author" content="Mother India Global School, Uttarakhand">
-
-        <title>.: <?php echo _SCHOOL_ABREV_; ?> : Administration Panel :.</title>
+        <meta name="author" content="<?php echo _SCHOOL_;?>">
 
         <!-- Bootstrap Core CSS -->
         <link href="<?php echo base_url('_assets_/admin_sources/bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>" rel="stylesheet">
@@ -28,6 +28,7 @@
 
         <!-- Custom Fonts -->
         <link href="<?php echo base_url('_assets_/admin_sources/bower_components/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url('_assets_/css/mycss.css'); ?>" rel="stylesheet" type="text/css">
 
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

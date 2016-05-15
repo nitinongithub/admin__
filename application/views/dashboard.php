@@ -12,7 +12,7 @@
         <!-- /.row -->
         <div class="row">
             <?php $data['style_'] = ' style="height: 400px; overflow: auto"'; ?>
-            <?php //$this->load->view('newsevents/feednews', $data); ?>
+            <?php $this->load->view('dashboard/login', $data); ?>
         </div>
     </div>
 </div>

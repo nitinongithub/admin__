@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+date_default_timezone_set("Asia/Kolkata");
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ $config['mailpath'] 	= '/usr/sbin/sendmail';
 $config['charset'] 		= 'iso-8859-1';
 $config['wordwrap'] 	= TRUE;
 
-$config['base_url'] = 'http://localhost/admin___';
+$config['base_url'] = 'http://localhost/admin__';
 
 /*
 |--------------------------------------------------------------------------
@@ -524,7 +525,6 @@ Customized Definitions --------------------->>>>>
 define('_SCHOOL_', "School Name Here, City");
 define('_SCHOOL_ABREV_', "SNH");
 define('__BACKTOSITE__', 'http://localhost/admin__');
-//define('__BACKTOSITE__', 'http://www.motherindiaglobalschool.org');
 /*
 -------------------------------------------->>>>>
 */
@@ -538,6 +538,8 @@ define('__BACKTOSITE__', 'http://localhost/admin__');
 | for base controllers and some third-party libraries.
 |
 */
+/*
+
 define('EXT', '.php');
 function __autoload($class) {
     if (substr($class,0,3) !== 'CI_') {
@@ -546,3 +548,5 @@ function __autoload($class) {
         }
     }
 }
+
+*/

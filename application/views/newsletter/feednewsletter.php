@@ -1,7 +1,7 @@
 <div class="col-lg-12">
     <div class="panel panel-default"<?php //echo $style_; ?>>
         <div class="panel-heading">
-            Upload &amp; Manage Newsletters here...
+            Feed Newsletter here...
         </div>
         <div class="panel-body">
             <div class="row">

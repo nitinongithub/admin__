@@ -1,6 +1,6 @@
 <div class="col-lg-12">
     <div class="panel panel-default"<?php echo $style_; ?>>
-        <div class="panel-heading" style="color: #ff9000">
+        <div class="panel-heading" style="background: #ff9000; color: #ffffff">
             Update Student Birth Day here...
         </div>
         <div class="panel-body">
@@ -56,8 +56,8 @@
                         echo form_input($data);
                         ?>
                     </div>
-                    <button type="submit" class="btn btn-primary">Update Button</button>
-                    <button type="reset" class="btn btn-flickr">Reset Button</button>
+                    <button type="submit" class="btn btn-danger">Update</button>
+                    <button type="reset" class="btn btn-flickr">Reset</button>
                     <?php echo form_close(); ?>
                     <div style="color: #ff0000; font-weight: bold; font-style: italic; padding: 5px"><?php echo $this->session->flashdata('feed_msg_'); ?></div>
                 </div>

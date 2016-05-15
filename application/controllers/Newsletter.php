@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Newsletter extends my_admin {
+class Newsletter extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -10,8 +10,8 @@ class Newsletter extends my_admin {
 
     function newsletters() {
         $data['user___'] = $this->session->userdata('ussr_');
-        $data['newsletter_'] = $this->mm->get_active_newsletter();
-        $data['newsletter_d'] = $this->mm->get_deactive_newsletter();
+        $data['newsletter_'] = $this->mmnwl->get_active_newsletter();
+        $data['newsletter_d'] = $this->mmnwl->get_deactive_newsletter();
         $data['folder_'] = 'newsletter';
         $data['page__'] = 'feednewsletter';
         $data['page_head'] = 'Upload &amp; Manage Newsletters';
@@ -24,13 +24,13 @@ class Newsletter extends my_admin {
     }
 
     function upload_newsletter() {
-        $res_ = $this->mm->upload_newsletter();
+        $res_ = $this->mmnwl->upload_newsletter();
         $this->session->set_flashdata('_msg_', $res_['msg_']);
-        redirect('admin_/newsletters');
+        redirect('newsletter/newsletters');
     }
 
     function active_deactive_newsletter($id_, $status_) {
-        $res_ = $this->mm->active_deactive_newsletter($id_, $status_);
+        $res_ = $this->mmnwl->active_deactive_newsletter($id_, $status_);
         if ($res_ == TRUE) {
             if ($status_ == 1) {
                 $this->session->set_flashdata('error_msg_', 'News Activated Successfully');
@@ -40,14 +40,14 @@ class Newsletter extends my_admin {
         } else {
             $this->session->set_flashdata('error_msg_', 'Something went wrong. Please try again !!');
         }
-        redirect('admin_/newsletters');
+        redirect('newsletter/newsletters');
     }
 
     function edit_newsletter($id__) {
         $data['user___'] = $this->session->userdata('ussr_');
-        $data['newsletter_edit'] = $this->mm->get_newsletter_for_edit($id__);
-        $data['newsletter_'] = $this->mm->get_active_newsletter();
-        $data['newsletter_d'] = $this->mm->get_deactive_newsletter();
+        $data['newsletter_edit'] = $this->mmnwl->get_newsletter_for_edit($id__);
+        $data['newsletter_'] = $this->mmnwl->get_active_newsletter();
+        $data['newsletter_d'] = $this->mmnwl->get_deactive_newsletter();
         $data['edit_page_heading'] = 'Update Newsletter';
         $data['folder_'] = 'newsletter';
         $data['page__'] = 'feednewsletter';
@@ -62,19 +62,19 @@ class Newsletter extends my_admin {
     }
 
     function update_newsletter($id__) {
-        $res_ = $this->mm->updateNewsletter_($id__);
+        $res_ = $this->mmnwl->updateNewsletter_($id__);
         echo $this->session->set_flashdata('error_msg_', $res_['msg_']);
-        redirect('admin_/edit_newsletter/' . $id__);
+        redirect('newsletter/edit_newsletter/' . $id__);
     }
 
     function delete_newsletter($id_) {
-        $res_ = $this->mm->delete_newsletter($id_);
+        $res_ = $this->mmnwl->delete_newsletter($id_);
         if ($res_ == TRUE) {
             $this->session->set_flashdata('error_msg_', 'Newsletter deleted Successfully');
         } else {
             $this->session->set_flashdata('error_msg_', 'Something went wrong. Please try again !!');
         }
-        redirect('admin_/newsletters');
+        redirect('newsletter/newsletters');
     }
 }
 

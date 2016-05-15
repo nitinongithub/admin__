@@ -2,16 +2,12 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends my_admin {
+class Dashboard extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        //if (!$this->session->userdata('ussr_')) {
-            //redirect(__BACKTOSITE__);
-        //}
-
-        if (!$this->session->userdata('ussr_')) {
-            $this->session->set_userdata('ussr_', 'Admin');
+        if (! $this->session->userdata('ussr_')) {
+            redirect(__BACKTOSITE__);
         }
     }
 
@@ -22,4 +18,13 @@ class Dashboard extends my_admin {
         $this->load->view('dashboard', $data);
         $this->load->view('templates/footer');
     }
+
+     function log__out() {
+        $this->session->unset_userdata('ussr_');
+        $this->session->unset_userdata('stss_');
+        //$this->session->unset_userdata('_ADMIN_');
+        //redirect(__BACKTOSITE__);
+        redirect('login');
+    }
+
 }
