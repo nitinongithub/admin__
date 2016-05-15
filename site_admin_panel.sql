@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2016 at 01:05 PM
+-- Generation Time: May 15, 2016 at 03:12 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 7.0.1
 
@@ -23,6 +23,23 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `activities`
+--
+
+CREATE TABLE `activities` (
+  `ID` int(11) NOT NULL,
+  `TITLE_` varchar(200) NOT NULL,
+  `BRIEF_` text NOT NULL,
+  `DET_PATH` varchar(100) NOT NULL,
+  `PICTURE_PATH` varchar(100) NOT NULL,
+  `DATE_OF_ACTIVITY` varchar(15) NOT NULL,
+  `DATE_` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `STATUS_` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `bday_data`
 --
 
@@ -35,6 +52,13 @@ CREATE TABLE `bday_data` (
   `STATUS` int(11) NOT NULL,
   `USERNAME_` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `bday_data`
+--
+
+INSERT INTO `bday_data` (`BID`, `NAME_`, `DOB`, `PHOTO_`, `DOA`, `STATUS`, `USERNAME_`) VALUES
+(1, 'Gunjan', '2016-05-15', '1.jpg', '2016-05-14 19:15:25', 1, 'nitin');
 
 -- --------------------------------------------------------
 
@@ -66,6 +90,13 @@ CREATE TABLE `gallery_category` (
   `STATUS` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `gallery_category`
+--
+
+INSERT INTO `gallery_category` (`CATEG_ID`, `CATEGORY`, `DESC`, `STATUS`) VALUES
+(1, 'General', 'General', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -77,6 +108,14 @@ CREATE TABLE `login` (
   `PASSWORD_` varchar(25) NOT NULL,
   `USER_STATUS` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`USERNAME_`, `PASSWORD_`, `USER_STATUS`) VALUES
+('naveen', '123', 'adm'),
+('nitin', '123', 'adm');
 
 -- --------------------------------------------------------
 
@@ -133,8 +172,22 @@ CREATE TABLE `user_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data for table `user_status`
+--
+
+INSERT INTO `user_status` (`ST_ID`, `STATUS`) VALUES
+('adm', 'Administrator'),
+('usr', 'User');
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `activities`
+--
+ALTER TABLE `activities`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `bday_data`
@@ -188,10 +241,15 @@ ALTER TABLE `user_status`
 --
 
 --
+-- AUTO_INCREMENT for table `activities`
+--
+ALTER TABLE `activities`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `bday_data`
 --
 ALTER TABLE `bday_data`
-  MODIFY `BID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `BID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `gallery`
 --
@@ -201,7 +259,7 @@ ALTER TABLE `gallery`
 -- AUTO_INCREMENT for table `gallery_category`
 --
 ALTER TABLE `gallery_category`
-  MODIFY `CATEG_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CATEG_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `newsevents`
 --
