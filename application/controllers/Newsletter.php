@@ -4,8 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Newsletter extends CI_Controller {
 
-    function __construct() {
+    function __construct(){
         parent::__construct();
+        $this->load->model('My_model_newsletter', 'mmnwl');
     }
 
     function newsletters() {

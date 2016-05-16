@@ -6,6 +6,7 @@ class Dashboard extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->model('My_model', 'mm');
         if (! $this->session->userdata('ussr_')) {
             redirect(__BACKTOSITE__);
         }

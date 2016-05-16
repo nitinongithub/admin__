@@ -4,6 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Gallery extends CI_Controller {
 
+    function __construct(){
+        parent::__construct();
+        $this->load->model('My_model_gallery', 'mmg');
+    }
     function index() {
         $data['user___'] = $this->session->userdata('ussr_');
         $data['existing'] = $this->mmg->get_all_categories();

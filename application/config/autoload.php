@@ -125,7 +125,7 @@ $autoload['language'] = array();
 | in the controller:
 |
 |	$autoload['model'] = array('first_model' => 'first');
-*/
+
 $autoload['model'] = array(
 	'My_model'=>'mm', 
 	'My_model_activities'=>'mma',
@@ -134,3 +134,4 @@ $autoload['model'] = array(
 	'My_model_newsletter'=>'mmnwl',
 	'My_model_newsevents'=>'mmnws',
 );
+*/

@@ -4,8 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Bday extends CI_Controller {
 
-    function __construct() {
+    function __construct(){
         parent::__construct();
+        $this->load->model('My_model_bday', 'mmb');
     }
 function bDay() {
         $data['user___'] = $this->session->userdata('ussr_');

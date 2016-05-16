@@ -6,6 +6,7 @@ class Login extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->model('My_model', 'mm');
         if (! $this->session->userdata('_ADMIN_')) {
             //redirect(__BACKTOSITE__);
             $this->session->set_userdata('_ADMIN_', 'ok');
