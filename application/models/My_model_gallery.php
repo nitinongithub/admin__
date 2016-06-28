@@ -82,6 +82,7 @@ class My_model_gallery extends CI_Model {
                     'WIDTH_' => 'x',
                     'HEIGHT_' => 'x',
                     'CATEG_ID' => $id_,
+                    'STATUS'    => 1,
                     'USERNAME_' => $this->session->userdata('ussr_')
                 );
                 $this->db->insert('gallery', $data);
