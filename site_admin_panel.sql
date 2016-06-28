@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2016 at 03:12 PM
+-- Generation Time: Jun 28, 2016 at 07:34 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 7.0.1
 
@@ -163,6 +163,27 @@ CREATE TABLE `newsletter` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `transfer_certificate`
+--
+
+CREATE TABLE `transfer_certificate` (
+  `TCID` int(11) NOT NULL,
+  `TC_NO` varchar(25) NOT NULL,
+  `ROLLNO` varchar(25) NOT NULL,
+  `FNAME` varchar(30) NOT NULL,
+  `MNAME` varchar(30) NOT NULL,
+  `LNAME` varchar(30) NOT NULL,
+  `ADMISSION_DATE` varchar(25) NOT NULL,
+  `ADMISSION_CLASS` varchar(10) NOT NULL,
+  `LEAVING_DATE` varchar(25) NOT NULL,
+  `LEAVING_CLASS` varchar(10) NOT NULL,
+  `ATTACH_PATH` varchar(150) NOT NULL,
+  `STATUS_` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table is used to store the TC detail & fast retrieval';
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_status`
 --
 
@@ -231,6 +252,12 @@ ALTER TABLE `newsletter`
   ADD KEY `USERNAME_` (`USERNAME_`);
 
 --
+-- Indexes for table `transfer_certificate`
+--
+ALTER TABLE `transfer_certificate`
+  ADD PRIMARY KEY (`TCID`);
+
+--
 -- Indexes for table `user_status`
 --
 ALTER TABLE `user_status`
@@ -244,7 +271,7 @@ ALTER TABLE `user_status`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `bday_data`
 --
@@ -270,6 +297,11 @@ ALTER TABLE `newsevents`
 --
 ALTER TABLE `newsletter`
   MODIFY `NID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `transfer_certificate`
+--
+ALTER TABLE `transfer_certificate`
+  MODIFY `TCID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --

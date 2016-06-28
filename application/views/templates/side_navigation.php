@@ -16,7 +16,7 @@
                             <a href="<?php echo site_url('dashboard'); ?>"><i class="fa fa-dropbox fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="<?php echo site_url('newsevents'); ?>"><i class="fa fa-dropbox fa-fw"></i> Feed News</a>
+                            <a href="<?php echo site_url('newsevents'); ?>"><i class="fa fa-book fa-fw"></i> Feed News</a>
                         </li>
                         <li>
                             <a href="<?php echo site_url('bday/bDay'); ?>"><i class="fa fa-users fa-fw"></i> Feed B'Day</a>
@@ -29,6 +29,9 @@
                         </li>
                         <li>
                             <a href="<?php echo site_url('activity'); ?>"><i class="fa fa-camera fa-fw"></i> Manage Activities</a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('tc'); ?>"><i class="fa fa-book fa-fw" aria-hidden="true"></i> Transfer Certificate</a>
                         </li>
                     </ul>
                 </div>
