@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class TC extends CI_Controller {
+class Tc extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -22,7 +22,13 @@ class TC extends CI_Controller {
         $this->load->view('inner', $data);
         $this->load->view('templates/footer');
     }
-    function feedTC(){
-        //yet to code
+    function uploadTC(){
+        $res_ = $this->mtc->uploadTC();
+        $this->session->set_flashdata('feed_msg_', $res_['msg_']);
+
+        redirect('tc');
+    }
+    function getTC_data($limit, $year__){
+        $this->mtc->getTC_data(-1, 2016);
     }
 }

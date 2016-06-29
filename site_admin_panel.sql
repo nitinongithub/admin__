@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2016 at 07:34 PM
+-- Generation Time: Jun 29, 2016 at 07:12 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 7.0.1
 
@@ -163,6 +163,22 @@ CREATE TABLE `newsletter` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tc_paths`
+--
+
+CREATE TABLE `tc_paths` (
+  `ID` int(11) NOT NULL,
+  `TCID` int(11) NOT NULL,
+  `TC_NO` varchar(25) NOT NULL,
+  `ATTACH_PATH` varchar(100) NOT NULL,
+  `DATE_` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `STATUS_` tinyint(1) NOT NULL,
+  `USERNAME_` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `transfer_certificate`
 --
 
@@ -177,8 +193,7 @@ CREATE TABLE `transfer_certificate` (
   `ADMISSION_CLASS` varchar(10) NOT NULL,
   `LEAVING_DATE` varchar(25) NOT NULL,
   `LEAVING_CLASS` varchar(10) NOT NULL,
-  `ATTACH_PATH` varchar(150) NOT NULL,
-  `STATUS_` tinyint(1) NOT NULL
+  `USERNAME_` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table is used to store the TC detail & fast retrieval';
 
 -- --------------------------------------------------------
@@ -252,10 +267,19 @@ ALTER TABLE `newsletter`
   ADD KEY `USERNAME_` (`USERNAME_`);
 
 --
+-- Indexes for table `tc_paths`
+--
+ALTER TABLE `tc_paths`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `TCID` (`TCID`),
+  ADD KEY `USERNAME_` (`USERNAME_`);
+
+--
 -- Indexes for table `transfer_certificate`
 --
 ALTER TABLE `transfer_certificate`
-  ADD PRIMARY KEY (`TCID`);
+  ADD PRIMARY KEY (`TCID`),
+  ADD KEY `USERNAME_` (`USERNAME_`);
 
 --
 -- Indexes for table `user_status`
@@ -298,10 +322,15 @@ ALTER TABLE `newsevents`
 ALTER TABLE `newsletter`
   MODIFY `NID` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `tc_paths`
+--
+ALTER TABLE `tc_paths`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `transfer_certificate`
 --
 ALTER TABLE `transfer_certificate`
-  MODIFY `TCID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `TCID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
@@ -311,6 +340,12 @@ ALTER TABLE `transfer_certificate`
 --
 ALTER TABLE `login`
   ADD CONSTRAINT `usrstatus_for_login` FOREIGN KEY (`USER_STATUS`) REFERENCES `user_status` (`ST_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tc_paths`
+--
+ALTER TABLE `tc_paths`
+  ADD CONSTRAINT `tc_paths_ibfk_1` FOREIGN KEY (`TCID`) REFERENCES `transfer_certificate` (`TCID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
