@@ -5,9 +5,9 @@ class Newsevents extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('My_model_newsevents', 'mmnws');
-        //if (!$this->session->userdata('ussr_')) {
-            //redirect(__BACKTOSITE__);
-        //}
+        if (! $this->session->userdata('ussr_')) {
+            redirect(__BACKTOSITE__);
+        }
     }
 
     function index() {

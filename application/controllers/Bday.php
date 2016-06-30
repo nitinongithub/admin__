@@ -7,12 +7,15 @@ class Bday extends CI_Controller {
     function __construct(){
         parent::__construct();
         $this->load->model('My_model_bday', 'mmb');
+        if (! $this->session->userdata('ussr_')) {
+            redirect(__BACKTOSITE__);
+        }
     }
-function bDay() {
+    function bDay() {
         $data['user___'] = $this->session->userdata('ussr_');
         $data['bday_'] = $this->mmb->get_all_bdays();
-        $data['today_'] = $this->mmb->students_bday_today();
-        //$data['today_'] = $this->mmb->students_bday_this_week();
+        //$data['today_'] = $this->mmb->students_bday_today();
+        $data['today_'] = $this->mmb->students_bday_this_week(7);
         $data['deactivebday_'] = $this->mmb->get_all_bdays_deactivated();
         $data['folder_'] = 'bday';
         $data['page__'] = 'feedbday';
@@ -43,7 +46,7 @@ function bDay() {
 
         $data['user___'] = $this->session->userdata('ussr_');
         $data['bday_'] = $this->mmb->get_all_bdays();
-        $data['today_'] = $this->mmb->students_bday_today();
+        $data['today_'] = $this->mmb->students_bday_this_week(7);
         $data['deactivebday_'] = $this->mmb->get_all_bdays_deactivated();
         $data['folder_'] = 'bday';
         $data['page_head'] = 'Update Birthday';

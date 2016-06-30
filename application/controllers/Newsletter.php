@@ -7,6 +7,9 @@ class Newsletter extends CI_Controller {
     function __construct(){
         parent::__construct();
         $this->load->model('My_model_newsletter', 'mmnwl');
+        if (! $this->session->userdata('ussr_')) {
+            redirect(__BACKTOSITE__);
+        }
     }
 
     function newsletters() {

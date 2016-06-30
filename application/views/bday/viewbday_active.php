@@ -1,7 +1,7 @@
 <div class="col-lg-6">
     <div class="panel panel-default"<?php echo $style_; ?>>
         <div class="panel-heading" style="background: #c3f9cb">
-            Today's Birthday
+            Birthday within 7 days
         </div>
         <!-- .panel-heading -->
         <div class="panel-body">

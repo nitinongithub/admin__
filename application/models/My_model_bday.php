@@ -21,27 +21,23 @@ class My_model_bday extends CI_Model {
     }
 
     
-    function students_bday_this_week() {
+    function students_bday_this_week($diff_) {
         $datetime = new DateTime(date('Y/m/d'));
-        $datetime->modify('+7 day');
+        $datetime->modify('+'.$diff_.' day');
         $next7thdaydate= $datetime->format('Y-m-d');
         $str_dt = explode('-',$next7thdaydate);
 
-        $sevenththday = $str_dt[0];
-        $dt_ = date('d');
-        $mnth_ = date('m');
-        $yr_ = date('Y');
+        $dt_ = $str_dt[2];
+        $mnth_ = $str_dt[1];
+        $yr_ = $str_dt[0];
+        $dateupto = $yr_.'/'.$mnth_.'/'.$dt_;
 
-        //$this->db->where('MONTH(DOB)', $mnth_);
-        //$this->db->where('STR_TO_DATE(CONCAT('.$yr_.',"-",MONTH(DOB),"-", DAY(DOB)),"%Y-%m-%d") BETWEEN( '.date('Y-m-d').' AND '.$next7thdaydate.')');
-        //$this->db->where('CONCAT('.$yr_.',"-",MONTH(DOB),"-", DAY(DOB))<=', $next7thdaydate);
-        //$this->db->where("MOD(DAYOFYEAR(".date('Y-m-d').") - DAYOFYEAR(DOB) + 365, 365) <= 7 OR MOD(DAYOFYEAR(DOB) - DAYOFYEAR(".date('Y-m-d').") + 365, 365) <= 7");
+        $this->db->where('DATE_FORMAT(CONCAT('.date('Y').', "/",MONTH(DOB),"/",DAY(DOB)),"%Y/%m/%d") >=', date('Y/m/d'));
+        $this->db->where('DATE_FORMAT(CONCAT('.date('Y').', "/",MONTH(DOB),"/",DAY(DOB)),"%Y/%m/%d") <=', $dateupto);
         $this->db->where('STATUS', 1);
         $this->db->order_by('NAME_');
         $query = $this->db->get('bday_data');
-
-        echo $this->db->last_query();
-        die();
+        
         return $query->result();
     }
     

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2016 at 07:12 PM
+-- Generation Time: Jun 30, 2016 at 06:48 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 7.0.1
 
@@ -52,13 +52,6 @@ CREATE TABLE `bday_data` (
   `STATUS` int(11) NOT NULL,
   `USERNAME_` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `bday_data`
---
-
-INSERT INTO `bday_data` (`BID`, `NAME_`, `DOB`, `PHOTO_`, `DOA`, `STATUS`, `USERNAME_`) VALUES
-(1, 'Gunjan', '2016-05-15', '1.jpg', '2016-05-14 19:15:25', 1, 'nitin');
 
 -- --------------------------------------------------------
 
@@ -134,13 +127,6 @@ CREATE TABLE `newsevents` (
   `STATUS` int(11) NOT NULL DEFAULT '1',
   `USERNAME` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `newsevents`
---
-
-INSERT INTO `newsevents` (`ID`, `SUBJECT`, `NEWS`, `PATH_ATTACH`, `FONTJI`, `DATE_`, `TIME_`, `STATUS`, `USERNAME`) VALUES
-(1009, 'new1', 'new1', 'x', 'Arial', '09/05/2016', '08:51:10am', 0, 'Admin');
 
 -- --------------------------------------------------------
 
@@ -300,7 +286,7 @@ ALTER TABLE `activities`
 -- AUTO_INCREMENT for table `bday_data`
 --
 ALTER TABLE `bday_data`
-  MODIFY `BID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `BID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `gallery`
 --
@@ -325,12 +311,12 @@ ALTER TABLE `newsletter`
 -- AUTO_INCREMENT for table `tc_paths`
 --
 ALTER TABLE `tc_paths`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `transfer_certificate`
 --
 ALTER TABLE `transfer_certificate`
-  MODIFY `TCID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `TCID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- Constraints for dumped tables
 --
