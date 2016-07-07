@@ -1,4 +1,4 @@
-<?php $style_ = ' style="height: 400px; overflow: auto"'; ?>
+<?php $style_ = ' style="height: 300px; overflow: auto"'; ?>
 <div class="container">
     <div class="row">
         <div class="col-lg-12" style="height: 60px"></div>
@@ -48,11 +48,11 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Sign in</button>
                             <?php echo form_close(); ?>
-                            <div style="color: #ff0000; font-weight: bold; font-style: italic; padding: 5px"><?php echo $this->session->flashdata('feed_msg_'); ?></div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div style="color: #ff0000; font-weight: bold; font-style: italic; padding: 5px"><?php echo $this->session->flashdata('feed_msg_'); ?></div>
         </div>
         <div class="col-lg-3"></div>
     </div>

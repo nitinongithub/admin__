@@ -30,6 +30,7 @@ class Login extends CI_Controller {
             $this->session->set_userdata('stss_', $res_['sts_']);
             redirect('dashboard');
         } else {
+            $this->session->set_flashdata('feed_msg_', 'X: Wrong credentials found. Please try again!! ');
             redirect('login');
         }
     }
