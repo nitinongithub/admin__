@@ -70,3 +70,12 @@ function change_Cat(id_, val_, val2_) {
     document.getElementById('editCat').style.display = 'block';
     document.getElementById('newCat').style.display = 'none';
 }
+
+function change_Report(id_, val_, path_) {
+    document.getElementById('txtReportYear_edit').value = val_;
+    document.getElementById('txtID_edit').value = id_;
+    $("#Plist").html(path_);
+     $("a[href='mylist']").attr('href', base_url_ + "_assets_/annualReport/" + path_);
+    document.getElementById('editCat').style.display = 'block';
+    document.getElementById('newCat').style.display = 'none';
+}

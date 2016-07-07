@@ -33,6 +33,9 @@
                         <li>
                             <a href="<?php echo site_url('tc'); ?>"><i class="fa fa-book fa-fw" aria-hidden="true"></i> Transfer Certificate</a>
                         </li>
+                        <li>
+                            <a href="<?php echo site_url('annualReport'); ?>"><i class="fa fa-book fa-fw" aria-hidden="true"></i>Annual Reports</a>
+                        </li>
                     </ul>
                 </div>
             </div>

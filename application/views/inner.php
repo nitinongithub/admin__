@@ -21,7 +21,9 @@
         </div>
 
         <div class="row">
+            <?php if (isset($view1)) { ?>
             <?php $this->load->view($folder_ . '/' . $view1, $data); ?>
+            <?php } ?>
             <?php if (isset($view2)) { ?>
                 <?php $this->load->view($folder_ . '/' . $view2, $data); ?>
             <?php } ?>
