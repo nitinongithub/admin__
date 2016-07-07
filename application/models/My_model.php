@@ -24,28 +24,30 @@ class My_model extends CI_Model {
         return $data;
     }
 
-    function change_Password(){
-        $old_pwd = $this->input->post('txtOldPwd');
-        $confirm_pwd = $this->input->post('txtConfirmPwd');
+    function changepwd(){
+        if($this->session->userdata('pwd_count') <= 3){
+            $old_pwd = $this->input->post('old_pwd');
+            $new_pwd = $this->input->post('new_pwd');
 
-        $this->db->where('USERNAME_', $this->session->userdata('ussr_'));
-        $this->db->where('PASSWORD_', $old_pwd);
-        $query = $this->db->get('login');
-
-        if($query->num_rows() != 0){
-            $data = array(
-                'PASSWORD_' => $confirm_pwd
-            );
             $this->db->where('USERNAME_', $this->session->userdata('ussr_'));
-            $query = $this->db->update('login', $data);
+            $this->db->where('PASSWORD_', $old_pwd);
+            $query = $this->db->get('login');
 
-            if($query == TRUE){
-                $bool_ = array('res_'=>TRUE, 'msg_'=>'Password changed successfully. Please login again to proceed !!');
+            if($query->num_rows() != 0){
+                $data = array(
+                    'PASSWORD_' => $new_pwd
+                );
+                $this->db->where('USERNAME_', $this->session->userdata('ussr_'));
+                $this->db->where('PASSWORD_', $old_pwd);
+                $query = $this->db->update('login', $data);
+
+                $bool_ = array('res_'=>TRUE, 'msg_' => 'good');
+                $this->session->unset_userdata('pwd_count');
             } else {
-                $bool_ = array('res_'=>FALSE, 'msg_'=>'Some thing goes wrong. Please try again !!');
+                $bool_ = array('res_'=>FALSE, 'msg_' => 'Your old credentials are not matching. Please try again!!!');
             }
         } else {
-            $bool_ = array('res_'=>FALSE, 'msg_'=>'Some thing goes wrong. Please try again !!');
+            $bool_ = array('res_'=>FALSE, 'msg_' => 'All three chances over.');
         }
 
         return $bool_;

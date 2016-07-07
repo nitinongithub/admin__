@@ -20,7 +20,11 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>-->
-                        <li><a href="<?php echo site_url('dashboard/change_pwd'); ?>"><i class="fa fa-sign-out fa-fw"></i> Change Password</a> </li>
+                        
+                        <?php if($this->session->userdata('stss_') == 'adm'){ ?>
+                        <li><a href="<?php echo site_url('c_pwd');?>"><i class="fa fa-sign-out fa-fw"></i> Create User</a> </li>
+                        <?php } ?>
+                        <li><a href="<?php echo site_url('c_pwd');?>"><i class="fa fa-sign-out fa-fw"></i> Change Password</a> </li>
                         <li><a href="<?php echo site_url('dashboard/log__out'); ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a> </li>
                     </ul>
                     <!-- /.dropdown-user -->
