@@ -12,6 +12,7 @@ class My_model extends CI_Model {
 
         $this->db->where('USERNAME_', $this->input->post('txtUsr'));
         $this->db->where('PASSWORD_', $this->input->post('txtPwd'));
+        $this->db->where('BLOCK', 0); // This condition says un-blocked user is only authorized to use the software
         $query = $this->db->get('login');
 
         if ($query->num_rows() != 0) {

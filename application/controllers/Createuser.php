@@ -18,22 +18,28 @@ class Createuser extends CI_Controller {
         
         $data['folder_'] = 'createuser';
         $data['page__'] = 'index';
-        $data['page_head'] = 'Create &amp; Manage New User';
+        $data['page_head'] = 'Create &amp; Manage Users';
         
         $this->load->view('templates/header');
         $this->load->view('inner', $data);
         $this->load->view('templates/footer');
     }
-
-    function blockme($username, $block){
-
+    
+    function create_user(){
+        $result = $this->cu->create_user();
+        $this->session->set_flashdata('feed_msg_', $result['msg_']);
+        redirect('createuser');
     }
 
-    function edituser($username){
-
+    function active_inactive($username, $block){
+        $result = $this->cu->active_inactive($username, $block);
+        $this->session->set_flashdata('feed_msg_', $result['msg_']);
+        redirect('createuser');
     }
 
     function deleteuser($username){
-    	
+    	$result = $this->cu->delete_user($username);
+        $this->session->set_flashdata('msg_delete_', $result['msg_']);
+        redirect('createuser');
     }
 }

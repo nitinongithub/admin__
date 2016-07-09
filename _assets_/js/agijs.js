@@ -36,4 +36,12 @@ $(function(){
 			});
 		}
 	});
+
+	$('#chkStatus').click(function(){ 
+		if($('#chkStatus').is(':checked')){
+			$('#txtStatus').val(1);
+		} else {
+			$('#txtStatus').val(0);
+		}
+	});
 });

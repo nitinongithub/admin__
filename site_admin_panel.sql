@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2016 at 06:48 PM
+-- Generation Time: Jul 09, 2016 at 07:51 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 7.0.1
 
@@ -36,6 +36,33 @@ CREATE TABLE `activities` (
   `DATE_` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `STATUS_` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `activities`
+--
+
+INSERT INTO `activities` (`ID`, `TITLE_`, `BRIEF_`, `DET_PATH`, `PICTURE_PATH`, `DATE_OF_ACTIVITY`, `DATE_`, `STATUS_`) VALUES
+(1, 'Activity One', 'Amrapali Website is now re-engineered in a new architecture as per the modern trends and standards of the World Wide Web. Combination of MVC & Bootstrap technology endow with new heights to our website, which ensures secure, more reliable, strong development environment and embedded with smart devices compatibility.', '1.docx', '1.jpg', '2016-07-28', '2016-07-07 06:02:45', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `annual_report`
+--
+
+CREATE TABLE `annual_report` (
+  `ID` int(11) NOT NULL,
+  `PATH` varchar(100) NOT NULL,
+  `YEAR` varchar(15) NOT NULL,
+  `STATUS_` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `annual_report`
+--
+
+INSERT INTO `annual_report` (`ID`, `PATH`, `YEAR`, `STATUS_`) VALUES
+(1, '1.docx', 'Report 1', 1);
 
 -- --------------------------------------------------------
 
@@ -99,16 +126,22 @@ INSERT INTO `gallery_category` (`CATEG_ID`, `CATEGORY`, `DESC`, `STATUS`) VALUES
 CREATE TABLE `login` (
   `USERNAME_` varchar(40) NOT NULL,
   `PASSWORD_` varchar(25) NOT NULL,
-  `USER_STATUS` varchar(5) NOT NULL
+  `USER_STATUS` varchar(5) NOT NULL,
+  `BLOCK` tinyint(1) NOT NULL DEFAULT '1',
+  `USER_` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`USERNAME_`, `PASSWORD_`, `USER_STATUS`) VALUES
-('naveen', '123', 'adm'),
-('nitin', '123', 'adm');
+INSERT INTO `login` (`USERNAME_`, `PASSWORD_`, `USER_STATUS`, `BLOCK`, `USER_`) VALUES
+('naveen', '123', 'adm', 1, 'nitin'),
+('nitin', '123', 'adm', 0, 'nitin'),
+('user1', '123', 'usr', 0, 'nitin'),
+('user2', '123', 'usr', 1, 'nitin'),
+('user3', '123', 'usr', 0, 'nitin'),
+('user4', '123', 'usr', 1, 'nitin');
 
 -- --------------------------------------------------------
 
@@ -162,6 +195,13 @@ CREATE TABLE `tc_paths` (
   `USERNAME_` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tc_paths`
+--
+
+INSERT INTO `tc_paths` (`ID`, `TCID`, `TC_NO`, `ATTACH_PATH`, `DATE_`, `STATUS_`, `USERNAME_`) VALUES
+(10, 9, '123', '9.png', '2016-06-30 17:22:58', 1, 'nitin');
+
 -- --------------------------------------------------------
 
 --
@@ -181,6 +221,13 @@ CREATE TABLE `transfer_certificate` (
   `LEAVING_CLASS` varchar(10) NOT NULL,
   `USERNAME_` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table is used to store the TC detail & fast retrieval';
+
+--
+-- Dumping data for table `transfer_certificate`
+--
+
+INSERT INTO `transfer_certificate` (`TCID`, `TC_NO`, `ROLLNO`, `FNAME`, `MNAME`, `LNAME`, `ADMISSION_DATE`, `ADMISSION_CLASS`, `LEAVING_DATE`, `LEAVING_CLASS`, `USERNAME_`) VALUES
+(9, '123', '321', 'Nitin', 'Deepak', 'Mathur', '1999-12-31', '1', '2016-12-31', '12', 'nitin');
 
 -- --------------------------------------------------------
 
@@ -209,6 +256,12 @@ INSERT INTO `user_status` (`ST_ID`, `STATUS`) VALUES
 -- Indexes for table `activities`
 --
 ALTER TABLE `activities`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `annual_report`
+--
+ALTER TABLE `annual_report`
   ADD PRIMARY KEY (`ID`);
 
 --
@@ -281,12 +334,17 @@ ALTER TABLE `user_status`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `annual_report`
+--
+ALTER TABLE `annual_report`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `bday_data`
 --
 ALTER TABLE `bday_data`
-  MODIFY `BID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `BID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `gallery`
 --
@@ -301,7 +359,7 @@ ALTER TABLE `gallery_category`
 -- AUTO_INCREMENT for table `newsevents`
 --
 ALTER TABLE `newsevents`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1010;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `newsletter`
 --
@@ -311,12 +369,12 @@ ALTER TABLE `newsletter`
 -- AUTO_INCREMENT for table `tc_paths`
 --
 ALTER TABLE `tc_paths`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `transfer_certificate`
 --
 ALTER TABLE `transfer_certificate`
-  MODIFY `TCID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `TCID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- Constraints for dumped tables
 --
