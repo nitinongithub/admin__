@@ -22,7 +22,7 @@
                         <li class="divider"></li>-->
                         
                         <?php if($this->session->userdata('stss_') == 'adm'){ ?>
-                        <li><a href="<?php echo site_url('c_pwd');?>"><i class="fa fa-sign-out fa-fw"></i> Create User</a> </li>
+                        <li><a href="<?php echo site_url('createuser');?>"><i class="fa fa-sign-out fa-fw"></i> Create User</a> </li>
                         <?php } ?>
                         <li><a href="<?php echo site_url('c_pwd');?>"><i class="fa fa-sign-out fa-fw"></i> Change Password</a> </li>
                         <li><a href="<?php echo site_url('dashboard/log__out'); ?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a> </li>
