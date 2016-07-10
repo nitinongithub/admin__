@@ -56,6 +56,19 @@ class My_model_gallery extends CI_Model {
         $query = $this->db->update('gallery_category', $data);        
     }    
 
+    function deletecateg($id_){
+        $this->db->where('CATEG_ID', $id_);
+        $query = $this->db->delete('gallery_category');
+
+        if($query == TRUE){
+            $bool_ = array('res_'=>TRUE, 'msg_'=> 'Category Deleted successfully.');
+        } else {
+            $bool_ = array('res_'=>TRUE, 'msg_'=> 'Something goes wrong. Please try again !!');
+        }
+
+        return $bool_;
+    }
+    
     public function do_upload() {
         $config['upload_path'] = './_assets_/gallery';
         $config['allowed_types'] = 'jpg|jpeg|png';

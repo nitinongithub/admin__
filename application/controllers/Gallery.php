@@ -42,7 +42,8 @@ class Gallery extends CI_Controller {
     }
 
     function deleteCat($id_) {
-        $res_ = $this->mmg->active_inactive_($id_, $status);
+        $res_ = $this->mmg->deletecateg($id_);
+        $this->session->set_flashdata('_msg_', $res_['msg_']);
         redirect('gallery');
     }
 
