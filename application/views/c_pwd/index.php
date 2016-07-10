@@ -9,7 +9,7 @@
 	            <b><?php echo $this->session->userdata('ussr_') ;?></b> needs to change the password...
 	        </div>
 	        <div style="float: right">
-	        	<a href="<?php echo site_url('dashboard');?>">
+	        	<a href="<?php echo site_url('newsevents');?>">
 		        	<span class="glyphicon glyphicon-remove-circle" style="font-size: 20px; color: #900000"></span>
 		        </a>
 	        </div>

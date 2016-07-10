@@ -29,7 +29,7 @@ class Login extends CI_Controller {
         if ($res_['bool_'] == TRUE) {
             $this->session->set_userdata('ussr_', $this->input->post('txtUsr'));
             $this->session->set_userdata('stss_', $res_['sts_']);
-            redirect('dashboard');
+            redirect('newsevents');
         } else {
             $this->session->set_flashdata('feed_msg_', 'X: Wrong credentials found. Please try again!! ');
             redirect('login');
