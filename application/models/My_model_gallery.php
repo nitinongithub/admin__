@@ -132,35 +132,37 @@ class My_model_gallery extends CI_Model {
         return $data_;
     }
 
-    function deleteimg() {
-        $this->db->where('GL_ID', $this->input->post('id'));
+    function deleteimg($id) {
+        $this->db->where('GL_ID', $id);
         $query = $this->db->get('gallery');
+        
         if($query->num_rows() != 0){
             $row = $query->row();
             $bool_ = array('res_'=>TRUE, 'photo__' => $row->PHOTO_);
 
-            $this->db->where('GL_ID', $this->input->post('id'));
+            $this->db->where('GL_ID', $id);
             $this->db->delete('gallery');
         } else {
             $bool_ = array('res_'=>FALSE, 'photo__' => 'X');
         }
         return $bool_;
     }
-    function activeImg() {
+    
+    function activeImg($id) {
         $data = array(
             'STATUS' => 0,
         );
-        $this->db->where('GL_ID', $this->input->post('id'));
+        $this->db->where('GL_ID', $id);
         $query = $this->db->update('gallery', $data);
 
         echo'<h4 style="color:green">This image deleted successfully</h4>';
     }
 
-    function InactiveImg() {
+    function InactiveImg($id) {
         $data = array(
             'STATUS' => 1,
         );
-        $this->db->where('GL_ID', $this->input->post('id'));
+        $this->db->where('GL_ID',$id);
         $query = $this->db->update('gallery', $data);
 
         echo'<h4 style="color:green">This image deleted successfully</h4>';

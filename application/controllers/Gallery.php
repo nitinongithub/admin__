@@ -70,9 +70,9 @@ class Gallery extends CI_Controller {
         echo $data_to_ajax;
     }
 
-    function deleteimg() {
+    function deleteimg($id) {
         $uploadpath = FCPATH . '_assets_/gallery/';
-        $row = $this->mmg->deleteimg();
+        $row = $this->mmg->deleteimg($id);
 
         $src = $uploadpath . $row['photo__'];
         @unlink($src);
@@ -84,8 +84,8 @@ class Gallery extends CI_Controller {
         }
     }
 
-    function activeImg() {
-        $bool_ = $this->mmg->activeImg();
+    function activeImg($id) {
+        $bool_ = $this->mmg->activeImg($id);
 
         if($bool_ == TRUE){
             echo'<h4 style="color:green">This image deleted successfully</h4>';    
@@ -94,8 +94,8 @@ class Gallery extends CI_Controller {
         }
     }
 
-    function InactiveImg() {
-        $bool_ = $this->mmg->InactiveImg();
+    function InactiveImg($id) {
+        $bool_ = $this->mmg->InactiveImg($id);
 
         if($bool_ == TRUE){
             echo'<h4 style="color:green">This image deleted successfully</h4>';    

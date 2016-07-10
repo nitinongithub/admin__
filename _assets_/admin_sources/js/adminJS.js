@@ -11,9 +11,9 @@ function  loadgallery(dataCmb) {
             var id = $(this).attr('id');
             //$("#" + id + "g").hide();
             $.ajax({
-                url: site_url_ + "/gallery/deleteimg",
-                data: 'id=' + id,
-                type: 'POST'
+                url: site_url_ + "/gallery/deleteimg/"+ id,
+                //data: 'id=' + id,
+                type: 'GET'
             }).done(function (data) {
                 loadgallery(dataCmb);
             });
@@ -25,9 +25,9 @@ function  loadgallery(dataCmb) {
             e.preventDefault();
             var id = $(this).attr('id');
             $.ajax({
-                url: site_url_ + "/gallery/activeImg",
-                data: 'id=' + id,
-                type: 'POST'
+                url: site_url_ + "/gallery/activeImg/" + id,
+               // data: 'id=' + id,
+                type: 'GET'
             }).done(function (data) {
                 loadgallery(dataCmb);
             });
@@ -39,9 +39,9 @@ function  loadgallery(dataCmb) {
             e.preventDefault();
             var id = $(this).attr('id');
             $.ajax({
-                url: site_url_ + "/gallery/InactiveImg",
-                data: 'id=' + id,
-                type: 'POST'
+                url: site_url_ + "/gallery/InactiveImg/"+id,
+               // data: 'id=' + id,
+                type: 'GET'
             }).done(function (data) {
                 loadgallery(dataCmb);
             });
